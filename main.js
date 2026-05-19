@@ -126,7 +126,7 @@ document.getElementById("registro").addEventListener("submit", async function (e
   };
 
   try {
-    const response = await fetch("/.netlify/functions/subscribe", {
+    const response = await fetch("/api/subscribe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -200,7 +200,7 @@ btnSiguiente.addEventListener("click", () => {
   if (preguntaActual < preguntas.length) {
     mostrarPregunta();
   } else {
-    actualizarProgreso(); 
+    actualizarProgreso();
     mostrarResultado();
   }
 });
