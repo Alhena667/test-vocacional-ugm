@@ -1,0 +1,97 @@
+.pantalla-registro {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1b232b, #2e3b47);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.pantalla-registro form {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+}
+
+.colorFondo {
+    background-color: #1b232b !important;
+}
+
+.navbar {
+    margin-bottom: 30px;
+}
+
+
+.footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 71px;
+    background-color: #1b232b !important;
+}
+
+.logo-footer {
+    margin-bottom: 15px;
+    height: 114px;
+    width: 224px;
+}
+
+.acreditacion-footer {
+    height: 78px;
+    width: 207px;
+}
+
+.only-desktop {
+    list-style: none;
+    color: rgb(255, 255, 255);
+}
+
+.only-desktop li {
+    margin-bottom: 1rem;
+}
+
+.logoContacto {
+    top: 0;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.hvr-gold {
+    color: rgb(255, 255, 255);
+}
+
+.botonSiguiente {
+    margin-top: 30px;
+}
+
+#btn-siguiente {
+    color: #ffffff;
+    background-color: #1b232b;
+    border-radius: 10px;
+    width: 100px;
+    height: 34px;
+    border: none;
+}
+
+button#btn-siguiente:disabled {
+    color: #ffffff !important;
+    background-color: #b5c2cf !important;
+    border-radius: 10px;
+    width: 100px;
+    height: 34px;
+    border: none;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footer-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .footer-flex ul {
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+}
