@@ -116,7 +116,7 @@ let resultados = {
   Videojuegos: 0
 };
 
-document.getElementById("registro").addEventListener("submit", async function(e) {
+document.getElementById("registro").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
@@ -125,15 +125,27 @@ document.getElementById("registro").addEventListener("submit", async function(e)
     email: formData.get("email")
   };
 
-  await fetch("/.netlify/functions/subscribe", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
+  try {
+    const response = await fetch("/.netlify/functions/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
 
-  if (response.ok) {
-  document.getElementById("pantalla-registro").style.display = "none";
-  document.getElementById("pantalla-test").style.display = "block";
-}
+    if (response.ok) {
+      document.getElementById("pantalla-registro").style.display = "none";
+      document.getElementById("pantalla-test").style.display = "block";
+      mostrarPregunta();
+    } else {
+      alert("Error al registrar el correo");
+    }
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Hubo un problema de conexión");
+  }
 });
 
 let preguntaActual = 0;
@@ -188,7 +200,7 @@ btnSiguiente.addEventListener("click", () => {
   if (preguntaActual < preguntas.length) {
     mostrarPregunta();
   } else {
-    actualizarProgreso(); // ← para que llegue a 100%
+    actualizarProgreso(); 
     mostrarResultado();
   }
 });
@@ -222,7 +234,7 @@ function mostrarResultado() {
   // ganador
   let ganador = resultadosOrdenados[0];
 
-  // 🥇 MENSAJE ARRIBA DE TODO
+  //  MENSAJE ARRIBA DE TODO
   html += `
   <div class="mb-4 p-4 alert alert-info text-center">
     <h2>${ganador.carrera}</h2>
