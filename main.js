@@ -130,7 +130,10 @@ document.getElementById("registro").addEventListener("submit", async function(e)
     body: JSON.stringify(data)
   });
 
-  window.location.href = "test.html";
+  if (response.ok) {
+  document.getElementById("pantalla-registro").style.display = "none";
+  document.getElementById("pantalla-test").style.display = "block";
+}
 });
 
 let preguntaActual = 0;
