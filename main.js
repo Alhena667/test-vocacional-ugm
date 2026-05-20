@@ -1,3 +1,7 @@
+let resultadoFinal = null;
+let nombreGuardado = "";
+let emailGuardado = "";
+
 const preguntas = [
   {
     texto: "¿Qué te gusta hacer en tu tiempo libre?",
@@ -116,36 +120,18 @@ let resultados = {
   Videojuegos: 0
 };
 
-document.getElementById("registro").addEventListener("submit", async function (e) {
+document.getElementById("registro").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  const data = {
-    nombre: formData.get("nombre"),
-    email: formData.get("email")
-  };
 
-  try {
-    const response = await fetch("/api/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
+  nombreGuardado = formData.get("nombre");
+  emailGuardado = formData.get("email");
 
-    if (response.ok) {
-      document.getElementById("pantalla-registro").style.display = "none";
-      document.getElementById("pantalla-test").style.display = "block";
-      mostrarPregunta();
-    } else {
-      alert("Error al registrar el correo");
-    }
+  document.getElementById("pantalla-registro").style.display = "none";
+  document.getElementById("pantalla-test").style.display = "block";
 
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Hubo un problema de conexión");
-  }
+  mostrarPregunta();
 });
 
 let preguntaActual = 0;
@@ -223,6 +209,7 @@ function mostrarResultado() {
 
   let html = "";
 
+
   // ordenar resultados
   let resultadosOrdenados = Object.entries(resultados)
     .map(([carrera, puntos]) => {
@@ -262,4 +249,28 @@ function mostrarResultado() {
   });
 
   resultadoTexto.innerHTML = html;
+
+  resultadoFinal = {
+    ganador: ganador.carrera,
+    porcentajes: resultadosOrdenados
+  };
+  fetch("/api/subscribe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nombre: nombreGuardado,
+      email: emailGuardado,
+      resultado: resultadoFinal
+    })
+  })
+    .then(res => {
+      if (!res.ok) {
+        console.error("Error al guardar en Brevo");
+      }
+    })
+    .catch(err => {
+      console.error("Error de conexión:", err);
+    });
 }
