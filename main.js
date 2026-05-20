@@ -254,7 +254,7 @@ function mostrarResultado() {
     ganador: ganador.carrera,
     porcentajes: resultadosOrdenados
   };
-  fetch("/api/subscribe", {
+  ("/api/enviar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -267,7 +267,7 @@ function mostrarResultado() {
   })
     .then(res => {
       if (!res.ok) {
-        console.error("Error al guardar en Brevo");
+        console.error("Error al enviar resultado");
       }
     })
     .catch(err => {
