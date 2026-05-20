@@ -254,7 +254,7 @@ function mostrarResultado() {
     ganador: ganador.carrera,
     porcentajes: resultadosOrdenados
   };
-  ("/api/enviar", {
+  fetch("/api/enviar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
