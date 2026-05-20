@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Vocacional</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div id="pantalla-registro" class="pantalla-registro">
+      <form id="registro" class="card p-4 shadow">
+        <h2 class="mb-3 text-center">Antes de comenzar</h2>
+        <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre o apodo" required>
+        <input type="email" name="email" class="form-control mb-3" placeholder="Correo electrónico" required>
+        <button type="submit" class="btn btn-dark w-100">Comenzar Test</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <nav class="navbar navbar-expand-lg colorFondo">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="img/Logotipo UGM.png" alt="Logo" width="auto" height="90" class="d-inline-block align-text-top">
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div id="pantalla-test" style="display:none;">
+    <!-- BARRA PROGRESO -->
+    <div class="container text-center">
+      <h1 class="mb-4">Test Vocacional</h1>
+      <div class="progress mb-3">
+        <div id="barra-progreso" class="progress-bar" role="progressbar" style="width: 0%">
+          0%
+        </div>
+      </div>
+
+      <div id="pregunta-container">
+        <h2 id="pregunta"></h2>
+      </div>
+
+
+      <div id="opciones-container"></div>
+
+
+      <button id="btn-siguiente" disabled class="botonSiguiente">Siguiente</button>
+
+
+      <div id="resultado" style="display: none;">
+        <div id="resultado-texto"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="container-fluid footer">
+      <div class="row px-lg-5 px-3">
+
+        <div class="col-md-4 col-12 p-0">
+          <div class="d-flex flex-column align-items-md-start align-items-center">
+            <img src="img/Logo_Diad.png" class="logo-footer border border-black img-fluid" alt="">
+            <img src="https://advance.ugm.cl/wp-content/uploads/2025/10/Logo-Acreditacion-674x336-1.svg"
+              class="acreditacion-footer border border-black" alt="">
+          </div>
+        </div>
+
+        <div class="col-md-8 col-12 p-0">
+          <div
+            class="d-flex flex-column flex-md-row align-items-center text-center text-md-start align-items-md-start h-100 mt-4">
+            <ul class="only-desktop">
+              <li><strong>UNIVERSIDAD</strong></li>
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active" href="https://www.ugm.cl"
+                  target="blank"> Institucional </a></li>
+
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active"
+                  href="https://postgrados.ugm.cl/?_gl=1*1b263bl*_gcl_au*NjA3NzEzMDY4LjE3NzY4MDA0MDE." target="blank">
+                  Postgrado </a></li>
+
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active" href="https://admision.ugm.cl "
+                  target="blank"> Admisión </a></li>
+            </ul>
+
+            <ul class="only-desktop">
+              <li><strong>UNIVERSIDAD</strong></li>
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active" href="https://www.ugm.cl"
+                  target="blank"> Institucional </a></li>
+
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active"
+                  href="https://postgrados.ugm.cl/?_gl=1*1b263bl*_gcl_au*NjA3NzEzMDY4LjE3NzY4MDA0MDE." target="blank">
+                  Postgrado </a></li>
+
+              <li class="hover-subtitle"><a class="nav-link fw-semibold py-0 active" href="https://admision.ugm.cl "
+                  target="blank"> Admisión </a></li>
+
+
+            </ul>
+
+            <ul class="only-desktop">
+              <li><strong>ADVANCE</strong></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/#about"
+                  class="nav-link fw-semibold py-0 active"> ¿Qué es Advance? </a></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/#features"
+                  class="nav-link fw-semibold py-0 active"> Características </a></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/#testimonies"
+                  class="nav-link fw-semibold py-0 active"> Testimonios </a></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/#faqs"
+                  class="nav-link fw-semibold py-0 active">
+                  FAQs </a></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/convenios/"
+                  class="nav-link fw-semibold py-0 active"> Convenios </a></li>
+
+              <li class="hover-subtitle"> <a href="https://advance.ugm.cl/noticias/"
+                  class="nav-link fw-semibold py-0 active"> Noticias </a></li>
+            </ul>
+
+            <ul class="pt-md-0 pt-5 only-desktop">
+              <li><strong>CONTACTO</strong></li>
+
+              <li>
+                <div
+                  class="d-flex flex-column flex-md-row align-items-center text-center text-md-start align-items-md-start h-100 mt-4">
+                  <img class="me-3 logoContacto"
+                    src="https://advance.ugm.cl/wp-content/uploads/2022/09/footer-icon-1.svg" alt="">
+                  <a target="_blank" class="text-decoration-none" href="tel:+6004010061">
+                    <p class="hvr-gold">600-401-0061</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="d-flex flex-column flex-md-row align-items-center text-center text-md-start align-items-md-start h-100 mt-4">
+                  <img class="me-3 logoContacto"
+                    src="https://advance.ugm.cl/wp-content/uploads/2022/09/footer-icon-2.svg" alt="">
+                  <a target="_blank" class="text-decoration-none"
+                    href="mailto:advance@ugm.cl?subject=Solicitud%20de%20información">
+                    <p class="hvr-gold">Advance@ugm.cl</p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="d-flex flex-column flex-md-row align-items-center text-center text-md-start align-items-md-start h-100 mt-4">
+                  <img class="me-3 logoContacto"
+                    src="https://advance.ugm.cl/wp-content/uploads/2022/09/footer-icon-3.svg" alt="">
+                  <a target="_blank" class="text-decoration-none"
+                    href="https://www.google.com/maps/place/Av.+Andr%C3%A9s+Bello+1337,+7500533+Providencia,+Regi%C3%B3n+Metropolitana/data=!4m2!3m1!1s0x9662c589d0c7245f:0x563602ee1f6d1f89?sa=X&amp;ved=2ahUKEwjb7qLF_bH_AhWDFbkGHeVwCyAQ8gF6BAgIEAI">
+                    <p class="hvr-gold">Av. Andrés Bello 1337
+                      Providencia, Santiago, Chile.</p>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
