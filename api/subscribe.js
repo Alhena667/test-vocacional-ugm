@@ -7,7 +7,9 @@ export default async function handler(req, res) {
 
     const { nombre, email, resultado } = data;
 
-    console.log("Datos recibidos:", data); // 👈 para debug
+    const porcentajesFormateados = resultado?.porcentajes
+      ?.map(item => `${item.carrera} ${item.porcentaje.toFixed(1)}%`)
+      .join("\n") || "";
 
     const response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -20,23 +22,19 @@ export default async function handler(req, res) {
         attributes: {
           NOMBRE: nombre || "",
           RESULTADO_GANADOR: resultado?.ganador || "",
-          PORCENTAJES: JSON.stringify(resultado?.porcentajes || [])
+          PORCENTAJES: porcentajesFormateados
         },
         updateEnabled: true
       })
     });
 
-    const responseData = await response.json();
-    console.log("Brevo responde:", responseData);
-
     if (!response.ok) {
-      return res.status(400).json({ error: responseData });
+      return res.status(400).json({ error: "Error al guardar contacto" });
     }
 
     return res.status(200).json({ message: "Contacto guardado correctamente" });
 
   } catch (error) {
-    console.error("Error real:", error);
     return res.status(500).json({ error: "Error interno" });
   }
 }
